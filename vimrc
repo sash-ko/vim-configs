@@ -64,7 +64,7 @@ set complete+=t
 autocmd FileType python compiler pylint
 let g:pylint_show_rate = 0
 let g:pylint_onwrite = 0
-let g:NERDTreeIgnore = ['^.\+\.pyc$']
+let g:NERDTreeIgnore = ['^.\+\.pyc$', '^.\+\.o$', '^.\+\.so$']
 let g:session_autosave = 1
 let g:session_autoload = 0
 "let g:loaded_session = 1
