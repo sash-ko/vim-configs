@@ -130,3 +130,13 @@ abbr weigth weight
 abbr lenght length
 abbr rigth right
 abbr improt import
+
+:menu Tools.SaveSudo :w !sudo tee %<CR>
+
+" usage :em Postgres.Connect
+:menu Postgres.Configure :e /etc/postgresql/8.4/main/postgresql.conf<CR>
+:menu Postgres.Restart :!sudo su -c '/etc/init.d/postgresql-8.4 stop && /etc/init.d/postgresql-8.4 start'<CR><CR>
+:menu Postgres.CopyTo :!sudo cp % /usr/share/postgresql/8.4/
+:menu Postgres.Upload :!sudo su postgres -c 'psql -f % -d '<LEFT>
+:menu Postgres.DBList :!sudo su postgres -c 'psql -l'<CR>
+:menu Postgres.Connect :!sudo su postgres -c 'psql -d '<LEFT>

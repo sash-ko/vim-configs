@@ -1,2 +1,2 @@
 cp vimrc ~/.vimrc
-cp -r vim ~/.vim
+rsync -a -v -n vim/ ~/.vim/
