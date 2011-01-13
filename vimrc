@@ -12,6 +12,7 @@ function ShowGitBranch()
 endfunction
 
 set statusline=[%l,%c\ %P%M]\ %f\ %r%h%w\ %{ShowGitBranch()}
+set laststatus=2 " to display status line always
 
 set nu 
 set incsearch
