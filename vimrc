@@ -21,13 +21,14 @@ set encoding=utf-8
 set infercase "adjusting completetion case to the typed case
 set wildmenu
 
+set complete+=k~/.vim/autoload/autocomplit.dict
+set complete+=s~/.vim/autoload/autocomplit.ths
+
 syntax on
 colorscheme desert
 
 filetype on
 filetype plugin on
-
-"thesaurus
 
 set title
 set titlelen=50
@@ -62,7 +63,7 @@ let g:pylint_show_rate = 0
 let g:pylint_onwrite = 0
 
 " NERDTree
-let g:NERDTreeIgnore = ['^.\+\.pyc$', '^.\+\.o$', '^.\+\.so$']
+let g:NERDTreeIgnore = ['^.\+\.pyc$', '^.\+\.o$', '^.\+\.so$', '\.\w\+\~$']
 
 " sessions
 let g:session_autosave = 1
@@ -73,22 +74,6 @@ set sessionoptions-=tabpages
 " ====== Other ======
 
 au BufWinEnter *.py let w:m1=matchadd('Search', '\%>80v.*', -1)
-
-autocmd FileType python set omnifunc=pythoncomplete#Complete
-"tab auto complete
-function InsertTabWrapper()
-    let col = col('.') - 1
-    if !col || getline('.')[col - 1] !~ '\k'
-        return "\"
-    else
-        return "\<c-p>"
-    endif
-endfunction
-
-imap <c-r>=InsertTabWrapper()"show auto complete options
-" default complete is good enough
-"set complete=".kbtw"
-"set dictionary+=.vim/autoload/autocomplit.dict
 
 " template for python files
 autocmd BufNewFile *.py 0r ~/.vim/templates/py.tmpl
