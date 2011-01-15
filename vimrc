@@ -1,6 +1,41 @@
-set nocompatible
+" ====== General ======
 
-set ruler
+set nocompatible "non Vi-compatible
+set nu "show line number
+set incsearch
+set ignorecase
+set autoindent "copy indent from current line
+set shiftwidth=4
+set tabstop=4
+set smarttab
+set expandtab
+set softtabstop=4
+set novisualbell
+set wrap
+set linebreak
+set backup
+set writebackup
+set noswapfile
+set history=200
+set encoding=utf-8
+set infercase "adjusting completetion case to the typed case
+set wildmenu
+
+syntax on
+colorscheme desert
+
+filetype on
+filetype plugin on
+
+"thesaurus
+
+set title
+set titlelen=50
+
+set t_Co=256
+set cursorline
+" 22 for nice green line
+hi CursorLine ctermbg=235 cterm=none
 
 function ShowGitBranch()
     let b=GitBranch()
@@ -13,42 +48,29 @@ endfunction
 
 set statusline=[%l,%c\ %P%M]\ %f\ %r%h%w\ %{ShowGitBranch()}
 set laststatus=2 " to display status line always
+"set ruler
 
-set nu 
-set incsearch
-set ignorecase
-
-set autoindent
-set tabstop=4
-set shiftwidth=4
-set smarttab
-set expandtab
-set softtabstop=4
-
-set novisualbell
-
-set wrap
-set linebreak
-
-set nobackup
-set noswapfile
-
-set encoding=utf-8
-
-"set mouse=a
-
-syntax on
-colorscheme desert
-
-filetype on
-filetype plugin on
+" ====== Plugins config ======
 
 let python_highlight_all = 1
+let g:pydoc_cmd = "/usr/bin/pydoc"
+let g:pydoc_highlight=0
 
-set t_Co=256
-set cursorline
-" 22 for nice green line
-hi CursorLine ctermbg=235 cterm=none
+" pylint
+autocmd FileType python compiler pylint
+let g:pylint_show_rate = 0
+let g:pylint_onwrite = 0
+
+" NERDTree
+let g:NERDTreeIgnore = ['^.\+\.pyc$', '^.\+\.o$', '^.\+\.so$']
+
+" sessions
+let g:session_autosave = 1
+let g:session_autoload = 0
+"let g:loaded_session = 1
+set sessionoptions-=tabpages
+
+" ====== Other ======
 
 au BufWinEnter *.py let w:m1=matchadd('Search', '\%>80v.*', -1)
 
@@ -64,21 +86,9 @@ function InsertTabWrapper()
 endfunction
 
 imap <c-r>=InsertTabWrapper()"show auto complete options
-set complete=""
-set complete+=.
-set complete+=k
-set complete+=b
-set complete+=t
+" default complete is good enough
+"set complete=".kbtw"
 "set dictionary+=.vim/autoload/autocomplit.dict
-
-autocmd FileType python compiler pylint
-let g:pylint_show_rate = 0
-let g:pylint_onwrite = 0
-let g:NERDTreeIgnore = ['^.\+\.pyc$', '^.\+\.o$', '^.\+\.so$']
-let g:session_autosave = 1
-let g:session_autoload = 0
-"let g:loaded_session = 1
-set sessionoptions-=tabpages
 
 " template for python files
 autocmd BufNewFile *.py 0r ~/.vim/templates/py.tmpl
@@ -87,6 +97,7 @@ autocmd BufNewFile *.py 0r ~/.vim/templates/py.tmpl
 "autocmd BufReadPost *.py normal :%s/\_s\+\_$//g
 "map <c-f9> :%s/\.\+\(\_s\+\)\_$//g<cr>
 
+"set cindent for c and c++
 autocmd BufRead,BufWrite *.py set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
 
 autocmd BufRead,BufWrite *.py map <f1> :Pydoc <C-r><C-w><cr>
@@ -122,9 +133,6 @@ imap <c-s-tab> <esc>:tabpewvious<cr>
 "inoremap def<Space>     def ():<Left><Left><Left>
 "inoremap class<Space>     class (object):<Left><Left><Left><Left><Left><Left><Left><Left><Left>
 
-let g:pydoc_cmd = "/usr/bin/pydoc"
-let g:pydoc_highlight=0
-
 command Pyflakes :call Pyflakes()
 function! Pyflakes()
     let tmpfile = tempname()
@@ -141,7 +149,7 @@ abbr lenght length
 abbr rigth right
 abbr improt import
 
-" === Menu.Tools
+" ====== Menu.Tools ======
 
 command OpenTmpWindow :call OpenTmpWindow()
 function! OpenTmpWindow()
@@ -153,7 +161,7 @@ endfunction
 :menu Tools.SaveSudo :w !sudo tee %<CR>
 :menu Tools.Tmp :OpenTmpWindow<CR>
 
-" === Menu.Postgres
+" ====== Menu.Postgres ======
 
 let g:pg_version="8.4"
 "let g:pg_version=execute "!pg_config | grep 'VERSION' | grep -o -P '\d.\d'"
