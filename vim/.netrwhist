@@ -1,7 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
-let g:netrw_dirhist_1='/home/alysenko/.vim'
-let g:netrw_dirhist_2='/home/alysenko/src/CloudMade/cm_geocoding/trunk/geoimport/db'
-let g:netrw_dirhist_3='/home/alysenko/src/CloudMade/cm_geocoding/git/geocoding/geoimport/config'
-let g:netrw_dirhist_4='/home/alysenko/src/CloudMade/cm_geocoding/git/geocoding/geoimport/data/us_zipcodes'
-let g:netrw_dirhist_5='/home/alysenko'
