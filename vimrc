@@ -77,7 +77,7 @@ autocmd BufWinEnter *.py let w:m1=matchadd('Search', '\%>80v.*', -1)
 " template for python files
 autocmd BufNewFile *.py 0r ~/.vim/templates/py.tmpl
 autocmd BufRead,BufWrite *.py set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
-autocmd BufRead,BufWrite *.py map <f1> :Pydoc <C-r><C-w><cr>
+autocmd BufRead,BufWrite *.py map <F1> :Pydoc <C-r><C-w><cr>
 
 command Pyflakes :call Pyflakes()
 function! Pyflakes()
@@ -114,6 +114,7 @@ function! ExecuteFile()
     endif
 endfunction
 
+autocmd BufRead,BufWrite .vimrc map <F1> :help <C-r><C-w><cr>
 map <F2> :w<CR>
 map <F3> :Tlist<CR>
 map <F4> :NERDTreeToggle<CR>
