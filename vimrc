@@ -108,6 +108,8 @@ function! ExecuteFile()
     elseif ext == "cpp"
         execute "!gcc % -o %:r"<CR>
         execute "./%:r"
+    elseif ext == "html"
+        execute "!firefox %"
     else
         echo "Can not execute file " . expand("%")
     endif
