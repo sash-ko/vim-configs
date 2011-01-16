@@ -92,7 +92,6 @@ command Pylint :call Pylint()
 
 " ====== Key mappings ======
 
-command ExecuteFile :call ExecuteFile()
 function! ExecuteFile()
     execute "NERDTreeClose"
     execute "w"
@@ -118,19 +117,28 @@ autocmd BufRead,BufWrite .vimrc map <F1> :help <C-r><C-w><cr>
 map <F2> :w<CR>
 map <F3> :Tlist<CR>
 map <F4> :NERDTreeToggle<CR>
-map <F5> :ExecuteFile<CR>
+map <F5> :call ExecuteFile()<CR>
 map <F7> :execute "vimgrep /" . expand("<cword>") . "/j ********/*.%:e" <Bar> cw<CR>
 map <F9> :set hls!<CR>
 map <F10> :OpenSession 
 map <C-F10> :SaveSession 
 
-map <s-Tab> :tabnext<CR>
-map <C-s-Tab> :tabpewvious<CR>
+map <S-Tab> :tabnext<CR>
+map <C-S-Tab> :tabpewvious<CR>
 
 imap <S-Tab> <ESC>:tabnext<CR>
-imap <C-s-Tab> <ESC>:tabpewvious<CR>
+imap <C-S-Tab> <ESC>:tabpewvious<CR>
 
+" find and replace
 :nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
+
+function! FindAndReplace()
+    let f = input("find: ")
+    let r = input("replace by: ")
+    execute ':%s/\<' . f . '\>/' . r . '/g'
+    echo f . ' replaced by ' . r
+endfunction
+:map <C-h> :call FindAndReplace()<CR>
 
 " ====== Other ======
 
