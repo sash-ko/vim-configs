@@ -163,6 +163,7 @@ abbr weigth weight
 abbr lenght length
 abbr rigth right
 abbr improt import
+abbr heigth height
 
 " ====== Menu.Tools ======
 
