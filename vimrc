@@ -71,41 +71,69 @@ let g:session_autoload = 0
 "let g:loaded_session = 1
 set sessionoptions-=tabpages
 
-" ====== Other ======
+" ====== Python specific ======
 
-au BufWinEnter *.py let w:m1=matchadd('Search', '\%>80v.*', -1)
-
+autocmd BufWinEnter *.py let w:m1=matchadd('Search', '\%>80v.*', -1)
 " template for python files
 autocmd BufNewFile *.py 0r ~/.vim/templates/py.tmpl
-
-"autocmd BufWritePre *.py normal m`:%s/\s\+$//e ``
-"autocmd BufReadPost *.py normal :%s/\_s\+\_$//g
-"map <c-f9> :%s/\.\+\(\_s\+\)\_$//g<cr>
-
-"set cindent for c and c++
 autocmd BufRead,BufWrite *.py set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
-
 autocmd BufRead,BufWrite *.py map <f1> :Pydoc <C-r><C-w><cr>
-map <f2> :w<cr>
-map <f3> :Tlist<cr>
-map <f4> :NERDTreeToggle<cr>
-map <f5> :call Pyflakes()\|NERDTreeClose\|w\|!python % <cr>
-autocmd BufRead,BufWrite *.sh map <f5> :w\|!bash %<cr>
-autocmd BufRead,BufWrite *.c map <f5> :w\|!cc % -o %:r\|./%:r<cr>
-autocmd BufRead,BufWrite *.cpp map <f5> :w\|!gcc % -o %:r\|./%:r<cr>
-" %:e - current file extenstion (%)
-map <f7> :execute "vimgrep /" . expand("<cword>") . "/j ********/*.%:e" <Bar> cw<CR>
-map <f9> :set hls!<cr>
-map <f10> :OpenSession 
-map <c-f10> :SaveSession 
 
-map <s-tab> :tabnext<cr>
-map <c-s-tab> :tabpewvious<cr>
+command Pyflakes :call Pyflakes()
+function! Pyflakes()
+    let tmpfile = tempname()
+    execute "w" tmpfile
+    execute "set makeprg=(pyflakes\\ " . tmpfile . "\\\\\\|sed\\ s@" . tmpfile ."@%@)"
+    silent make
+    cw
+endfunction
 
-imap <s-tab> <esc>:tabnext<cr>
-imap <c-s-tab> <esc>:tabpewvious<cr>
+command Pylint :call Pylint()
+
+" ====== Key mappings ======
+
+command ExecuteFile :call ExecuteFile()
+function! ExecuteFile()
+    execute "NERDTreeClose"
+    execute "w"
+
+    let ext = expand('%:e')
+    if ext == "py"
+        execute "call Pyflakes()"
+        execute "!python %"
+    elseif ext == "sh"
+        execute "!bash %"
+    elseif ext == "c"
+        execute "!cc % -o %:r"<CR>
+        execute "!./%:r"
+    elseif ext == "cpp"
+        execute "!gcc % -o %:r"<CR>
+        execute "./%:r"
+    else
+        echo "Can not execute file " . expand("%")
+    endif
+endfunction
+
+map <F2> :w<CR>
+map <F3> :Tlist<CR>
+map <F4> :NERDTreeToggle<CR>
+map <F5> :ExecuteFile<CR>
+map <F7> :execute "vimgrep /" . expand("<cword>") . "/j ********/*.%:e" <Bar> cw<CR>
+map <F9> :set hls!<CR>
+map <F10> :OpenSession 
+map <C-F10> :SaveSession 
+
+map <s-Tab> :tabnext<CR>
+map <C-s-Tab> :tabpewvious<CR>
+
+imap <S-Tab> <ESC>:tabnext<CR>
+imap <C-s-Tab> <ESC>:tabpewvious<CR>
 
 :nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
+
+" ====== Other ======
+
+"set cindent for c and c++
 
 "inoremap {<Space>      {}<Left>
 "inoremap {<CR>  {<CR>}<Esc>O
@@ -118,16 +146,7 @@ imap <c-s-tab> <esc>:tabpewvious<cr>
 "inoremap def<Space>     def ():<Left><Left><Left>
 "inoremap class<Space>     class (object):<Left><Left><Left><Left><Left><Left><Left><Left><Left>
 
-command Pyflakes :call Pyflakes()
-function! Pyflakes()
-    let tmpfile = tempname()
-    execute "w" tmpfile
-    execute "set makeprg=(pyflakes\\ " . tmpfile . "\\\\\\|sed\\ s@" . tmpfile ."@%@)"
-    silent make
-    cw
-endfunction
-
-command Pylint :call Pylint()
+" ====== Abbreviations ======
 
 abbr weigth weight
 abbr lenght length
