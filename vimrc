@@ -20,6 +20,7 @@ set history=200
 set encoding=utf-8
 set infercase "adjusting completetion case to the typed case
 set wildmenu
+set noequalalways
 
 set complete+=k~/.vim/autoload/autocomplit.dict
 set complete+=s~/.vim/autoload/autocomplit.ths
