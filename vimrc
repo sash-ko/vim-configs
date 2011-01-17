@@ -34,6 +34,7 @@ filetype plugin on
 set title
 set titlelen=50
 autocmd VimLeave * let &titleold=getcwd()
+autocmd VimEnter * :redraw
 
 set t_Co=256
 set cursorline
