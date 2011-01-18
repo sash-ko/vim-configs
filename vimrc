@@ -79,8 +79,8 @@ set sessionoptions-=tabpages
 autocmd BufWinEnter *.py let w:m1=matchadd('Search', '\%>80v.*', -1)
 " template for python files
 autocmd BufNewFile *.py 0r ~/.vim/templates/py.tmpl
-autocmd BufRead,BufWrite *.py set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
-autocmd BufRead,BufWrite *.py map <F1> :Pydoc <C-r><C-w><cr>
+autocmd BufEnter,BufWrite *.py set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
+autocmd BufEnter,BufWrite *.py map <F1> :Pydoc <C-r><C-w><cr>
 
 command Pyflakes :call Pyflakes()
 function! Pyflakes()
@@ -147,13 +147,18 @@ endfunction
 
 " ====== Other ======
 
-"set cindent for c and c++
+function! ErlTemplate()
+    execute "normal i-module(" . expand('%:r') . ").\n-export(export_all).\n"
+endfunction
 
-"inoremap {<Space>      {}<Left>
-"inoremap {<CR>  {<CR>}<Esc>O
-"inoremap {}     {}
-"inoremap (<Space>      ()<Left>
-"inoremap ()     ()
+autocmd BufNewFile,BufEnter,BufWrite *.c,*.cpp set cindent
+autocmd BufNewFile *.erl :call ErlTemplate()
+
+inoremap {<Space>      {}<Left>
+inoremap {<CR>  {<CR>}<Esc>O
+inoremap {}     {}
+inoremap (<Space>      ()<Left>
+inoremap ()     ()
 "inoremap /*<Space>       /**/<Left><Left>
 "inoremap /*<Space>   /*<Space><Space>*/<Left><Left><Left>
 "inoremap /*<CR>      /*<CR>*/<Esc>O
@@ -203,7 +208,11 @@ function! GetDBCn()
     if exists("g:pg_default_db")    
         let dbname=g:pg_default_db
     else
-        let dbname=input('dbname: ')
+        if !exists("s:pg_last_db")
+            let s:pg_last_db = ""
+        endif
+        let dbname=input('dbname: ', s:pg_last_db)
+        let s:pg_last_db = dbname
     endif
     return 'psql -d ' . dbname
 endfunction
@@ -220,7 +229,25 @@ function! SetDefaultDB()
     endif
 endfunction
 
+function! PgAdminExecute()
+    silent! execute "w"
+    botright new 'results'
+    setlocal buftype=nofile bufhidden=wipe nobuflisted noswapfile nowrap
+    let dbcn = GetDBCn()
+    silent! execute "$read !" . g:pg_access . " " . dbcn . " < " . s:pg_admin_tab
+endfunction
+
+command PgAdmin :call PgAdmin()
+function! PgAdmin()
+    if !exists("s:pg_admin_tab")
+        let s:pg_admin_tab = tempname() . '-pg_admin'
+    endif
+    execute ":tabnew " . s:pg_admin_tab
+    map <buffer> <f5> :call PgAdminExecute()<CR>
+endfunction
+
 " usage :em Postgres.Connect
+:menu Postgres.PgAdmin :PgAdmin<CR>
 :menu Postgres.Connect :execute "!" . pg_access . " " . GetDBCn() . ""<CR>
 :menu Postgres.ExecuteAll :execute "!" . pg_access . " " . GetDBCn() . " < % <BAR> less"<CR>
 :menu Postgres.DefaultDb :SetDefaultDB <CR>
