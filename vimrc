@@ -76,7 +76,7 @@ set sessionoptions-=tabpages
 
 " ====== Python specific ======
 
-autocmd BufWinEnter *.py let w:m1=matchadd('Search', '\%>80v.*', -1)
+autocmd BufEnter *.py let w:m1=matchadd('Search', '\%>80v.*', -1)
 " template for python files
 autocmd BufNewFile *.py 0r ~/.vim/templates/py.tmpl
 autocmd BufEnter,BufWrite *.py set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
@@ -159,9 +159,9 @@ inoremap {<CR>  {<CR>}<Esc>O
 inoremap {}     {}
 inoremap (<Space>      ()<Left>
 inoremap ()     ()
-"inoremap /*<Space>       /**/<Left><Left>
+autocmd BufEnter *.c,*.cpp inoremap /*<Space>       /**/<Left><Left>
+"autocmd BufEnter *.c,*.cpp inoremap /*<CR>      /*<CR>*/<Esc>
 "inoremap /*<Space>   /*<Space><Space>*/<Left><Left><Left>
-"inoremap /*<CR>      /*<CR>*/<Esc>O
 "inoremap def<Space>     def ():<Left><Left><Left>
 "inoremap class<Space>     class (object):<Left><Left><Left><Left><Left><Left><Left><Left><Left>
 
@@ -175,15 +175,7 @@ abbr heigth height
 
 " ====== Menu.Tools ======
 
-command OpenTmpWindow :call OpenTmpWindow()
-function! OpenTmpWindow()
-    let tmpfile = tempname()
-    execute "w" tmpfile
-    split tmpfile
-    set filetype=sql
-endfunction
 :menu Tools.SaveSudo :w !sudo tee %<CR>
-:menu Tools.Tmp :OpenTmpWindow<CR>
 
 " ====== Menu.Postgres ======
 
