@@ -53,7 +53,9 @@ endfunction
 
 set statusline=[%l,%c\ %P%M]\ %f\ %r%h%w\ %{ShowGitBranch()}
 set laststatus=2 " to display status line always
-"set ruler
+set ruler
+
+set tags=tags
 
 " ====== Plugins config ======
 
@@ -74,6 +76,9 @@ let g:session_autosave = 1
 let g:session_autoload = 0
 "let g:loaded_session = 1
 set sessionoptions-=tabpages
+
+" tag list
+let Tlist_Use_Right_Window = 1
 
 " ====== Python specific ======
 
