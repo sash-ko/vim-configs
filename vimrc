@@ -126,7 +126,7 @@ map <F4> :NERDTreeToggle<CR>
 map <F5> :call ExecuteFile()<CR>
 map <F7> :execute "vimgrep /" . expand("<cword>") . "/j ********/*.%:e" <Bar> cw<CR>
 map <F9> :set hls!<CR>
-map <F10> :OpenSession 
+map <F10> :OpenSession<CR>
 map <C-F10> :SaveSession 
 
 map <S-Tab> :tabnext<CR>
