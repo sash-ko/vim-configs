@@ -232,9 +232,7 @@ endfunction
 
 command PgAdmin :call PgAdmin()
 function! PgAdmin()
-    if !exists("s:pg_admin_tab")
-        let s:pg_admin_tab = tempname() . '-pg_admin'
-    endif
+    let s:pg_admin_tab = ".vim_pg_admin_edit"
     execute ":tabnew " . s:pg_admin_tab
     map <buffer> <f5> :call PgAdminExecute()<CR>
 endfunction
