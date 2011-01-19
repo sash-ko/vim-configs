@@ -21,6 +21,7 @@ set encoding=utf-8
 set infercase "adjusting completetion case to the typed case
 set wildmenu
 set noequalalways
+set viminfo+=! " to save global variables in viminfo (uppercase only!)
 
 set complete+=k~/.vim/autoload/autocomplit.dict
 set complete+=s~/.vim/autoload/autocomplit.ths
@@ -200,11 +201,11 @@ function! GetDBCn()
     if exists("g:pg_default_db")    
         let dbname=g:pg_default_db
     else
-        if !exists("s:pg_last_db")
-            let s:pg_last_db = ""
+        if !exists("g:PG_LAST_DB")
+            let g:PG_LAST_DB = ""
         endif
-        let dbname=input('dbname: ', s:pg_last_db)
-        let s:pg_last_db = dbname
+        let dbname=input('dbname: ', g:PG_LAST_DB)
+        let g:PG_LAST_DB = dbname
     endif
     return 'psql -d ' . dbname
 endfunction
@@ -241,11 +242,8 @@ endfunction
 " usage :em Postgres.Connect
 :menu Postgres.PgAdmin :PgAdmin<CR>
 :menu Postgres.Connect :execute "!" . pg_access . " " . GetDBCn() . ""<CR>
-:menu Postgres.ExecuteAll :execute "!" . pg_access . " " . GetDBCn() . " < % <BAR> less"<CR>
+:menu Postgres.ExecuteAll :execute "!" . pg_access . " " . GetDBCn() . " -f %" <CR>
 :menu Postgres.DefaultDb :SetDefaultDB <CR>
 :menu Postgres.Restart :execute "!sudo su -c '" . pg_daemon . " stop && " . pg_daemon . " start'"<CR>
 :menu Postgres.Configure :execute "e /etc/postgresql/" . pg_version . "/main/postgresql.conf"<CR>
-" copy configs to db dir, e.g. cp synonym_geocode.syn /usr/share/postgresql/8.4/tsearch_data/
-:menu Postgres.CopyTo :execute "!sudo cp % /usr/share/postgresql/" . pg_version . "/"
-:menu Postgres.Upload :execute "!" . pg_access ." '" . GetDBCn() . " -f % "<CR>
 :menu Postgres.DBList :ShowDatabases <CR>
