@@ -133,6 +133,7 @@ map <F7> :execute "vimgrep /" . expand("<cword>") . "/j ********/*.%:e" <Bar> cw
 map <F9> :set hls!<CR>
 map <F10> :OpenSession<CR>
 map <C-F10> :SaveSession 
+nnoremap <silent> <F11> :YRShow<CR>
 
 map <S-Tab> :tabnext<CR>
 map <C-S-Tab> :tabpewvious<CR>
