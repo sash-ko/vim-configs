@@ -169,9 +169,9 @@ autocmd BufNewFile *.erl :call ErlTemplate()
 inoremap {<Space>      {}<Left>
 inoremap {<CR>  {<CR>}<Esc>O
 inoremap {}     {}
-inoremap (<Space>      ()<Left>
-inoremap ()     ()
-autocmd BufEnter *.c,*.cpp inoremap /*<Space>       /**/<Left><Left>
+"inoremap (<Space>      ()<Left>
+"inoremap ()     ()
+"autocmd BufEnter *.c,*.cpp inoremap /*<Space>       /**/<Left><Left>
 "autocmd BufEnter *.c,*.cpp inoremap /*<CR>      /*<CR>*/<Esc>
 "inoremap /*<Space>   /*<Space><Space>*/<Left><Left><Left>
 "inoremap def<Space>     def ():<Left><Left><Left>
