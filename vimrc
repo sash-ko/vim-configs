@@ -25,7 +25,7 @@ set viminfo+=! " to save global variables in viminfo (uppercase only!)
 
 set complete+=k~/.vim/autoload/autocomplit.dict
 set complete+=s~/.vim/autoload/autocomplit.ths
-set complete-=t "exclude tags from complete - performace issues
+"set complete-=t "exclude tags from complete - performace issues
 
 syntax on
 colorscheme desert
@@ -57,7 +57,7 @@ set laststatus=2 " to display status line always
 set ruler
 
 set tags=tags
-set tags+=~/.ctags/tags
+"set tags+=~/.ctags/tags
 
 " ====== Plugins config ======
 
