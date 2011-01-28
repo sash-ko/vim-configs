@@ -56,6 +56,7 @@ set laststatus=2 " to display status line always
 set ruler
 
 set tags=tags
+set tags+=~/.ctags/tags
 
 " ====== Plugins config ======
 
