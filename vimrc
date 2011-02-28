@@ -160,7 +160,7 @@ endfunction
 " ====== Other ======
 
 function! ErlTemplate()
-    execute "normal i-module(" . expand('%:r') . ").\n-export(export_all).\n"
+    execute "normal i-module(" . expand('%:r') . ").\n-compile(export_all).\n"
 endfunction
 
 autocmd BufNewFile,BufEnter,BufWrite *.c,*.cpp set cindent
