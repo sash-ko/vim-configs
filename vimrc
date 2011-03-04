@@ -13,8 +13,6 @@ set softtabstop=4
 set novisualbell
 set wrap
 set linebreak
-set backup
-set writebackup
 set noswapfile
 set history=200
 set encoding=utf-8
@@ -22,6 +20,12 @@ set infercase "adjusting completetion case to the typed case
 set wildmenu
 set noequalalways
 set viminfo+=! " to save global variables in viminfo (uppercase only!)
+
+set backup
+set writebackup
+if filewritable('/tmp')
+    set backupdir=/tmp
+endif
 
 set complete+=k~/.vim/autoload/autocomplit.dict
 set complete+=s~/.vim/autoload/autocomplit.ths
