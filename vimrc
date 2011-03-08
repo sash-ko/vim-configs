@@ -116,7 +116,8 @@ function! HideComments()
 endfunction
 
 autocmd BufEnter *.cpp,*.h,*.c,*.hpp execute "call HideComments()"
-autocmd BufEnter *.cpp,*.h,*.c,*.hpp map <F6> :A<CR>
+autocmd BufEnter *.cpp,*.h,*.c,*.hpp nmap <F6> :A<CR>
+autocmd BufEnter *.cpp,*.h,*.c,*.hpp nmap <S-i> :IHS<CR>
 
 " ====== Key mappings ======
 
