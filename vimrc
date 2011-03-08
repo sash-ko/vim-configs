@@ -107,6 +107,17 @@ endfunction
 
 command Pylint :call Pylint()
 
+" ====== C/C++ specific ======
+
+function! HideComments()
+    set foldmarker=/*,*/
+    set foldmethod=marker
+    set foldenable
+endfunction
+
+autocmd BufEnter *.cpp,*.h,*.c,*.hpp execute "call HideComments()"
+autocmd BufEnter *.cpp,*.h,*.c,*.hpp map <F6> :A<CR>
+
 " ====== Key mappings ======
 
 function! ExecuteFile()
@@ -138,7 +149,6 @@ map <F2> :w<CR>
 map <F3> :Tlist<CR>
 map <F4> :NERDTreeToggle<CR>
 map <F5> :call ExecuteFile()<CR>
-map <F6> :A<CR>
 map <F7> :execute "vimgrep /" . expand("<cword>") . "/j ********/*.%:e" <Bar> cw<CR>
 map <C-F7> [I:let nr = input("Which one: ")<Bar>exe "normal " . nr ."[\t"<CR>
 map <F9> :set hls!<CR>
