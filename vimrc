@@ -171,10 +171,14 @@ map <Leader>te :FufBufferTagAll<CR>
 :nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
 
 function! FindAndReplace()
-    let f = input("find: ")
-    let r = input("replace by: ")
-    execute ':%s/\<' . f . '\>/' . r . '/g'
-    echo f . ' replaced by ' . r
+    let f = input("find: ", expand("<cword>"))
+    if f != ''
+        let r = input("replace by: ", f)
+        silent! execute ':%s/\<' . f . '\>/' . r . '/g'
+        echo f . ' replaced by ' . r
+    else
+        echo
+    endif
 endfunction
 :map <C-h> :call FindAndReplace()<CR>
 
