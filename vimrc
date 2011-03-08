@@ -118,6 +118,7 @@ endfunction
 autocmd BufEnter *.cpp,*.h,*.c,*.hpp execute "call HideComments()"
 autocmd BufEnter *.cpp,*.h,*.c,*.hpp nmap <F6> :A<CR>
 autocmd BufEnter *.cpp,*.h,*.c,*.hpp nmap <S-i> :IHS<CR>
+autocmd BufNewFile,BufEnter,BufWrite *.c,*.cpp,*.h,*.hpp set cindent
 
 " ====== Key mappings ======
 
@@ -188,7 +189,6 @@ function! ErlTemplate()
     execute "normal i-module(" . expand('%:r') . ").\n-compile(export_all).\n"
 endfunction
 
-autocmd BufNewFile,BufEnter,BufWrite *.c,*.cpp set cindent
 autocmd BufNewFile *.erl :call ErlTemplate()
 
 inoremap {<Space>      {}<Left>
