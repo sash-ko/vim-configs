@@ -133,10 +133,12 @@ function! ExecuteFile()
 endfunction
 
 autocmd BufRead,BufWrite .vimrc map <F1> :help <C-r><C-w><cr>
+
 map <F2> :w<CR>
 map <F3> :Tlist<CR>
 map <F4> :NERDTreeToggle<CR>
 map <F5> :call ExecuteFile()<CR>
+map <F6> :A<CR>
 map <F7> :execute "vimgrep /" . expand("<cword>") . "/j ********/*.%:e" <Bar> cw<CR>
 map <C-F7> [I:let nr = input("Which one: ")<Bar>exe "normal " . nr ."[\t"<CR>
 map <F9> :set hls!<CR>
@@ -149,6 +151,10 @@ map <C-S-Tab> :tabpewvious<CR>
 
 imap <S-Tab> <ESC>:tabnext<CR>
 imap <C-S-Tab> <ESC>:tabpewvious<CR>
+
+"FuzzyFinder mappings
+map <Leader>fe :FufCoverageFile!<CR>
+map <Leader>te :FufBufferTagAll<CR>
 
 " find and replace
 :nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
