@@ -91,6 +91,7 @@ let TList_Auto_Update = 1
 " ====== Python specific ======
 
 autocmd BufEnter *.py let w:m1=matchadd('Search', '\%>80v.*', -1)
+autocmd BufLeave *.py :silent! call matchdelete(w:m1)
 " template for python files
 autocmd BufNewFile *.py 0r ~/.vim/templates/py.tmpl
 autocmd BufEnter,BufWrite *.py set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
