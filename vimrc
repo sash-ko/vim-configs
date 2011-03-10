@@ -166,11 +166,14 @@ imap <S-Tab> <ESC>:tabnext<CR>
 imap <C-S-Tab> <ESC>:tabpewvious<CR>
 
 "FuzzyFinder mappings
-map <Leader>fe :FufCoverageFile!<CR>
-map <Leader>te :FufBufferTagAll<CR>
+nnoremap <Leader>ff :FufCoverageFile!<CR>
+nnoremap <Leader>te :FufTag!<CR>
+nnoremap <Leader>tw :FufTagWithCursorWord!<CR>
+nnoremap <Leader>bt :FufBufferTagAll!<CR>
+nnoremap <Leader>bw :FufBufferTagAllWithCursorWord!<CR>
 
 " find and replace
-:nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
+nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
 
 function! FindAndReplace()
     let f = input("find: ", expand("<cword>"))
