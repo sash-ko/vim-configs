@@ -166,11 +166,13 @@ imap <S-Tab> <ESC>:tabnext<CR>
 imap <C-S-Tab> <ESC>:tabpewvious<CR>
 
 "FuzzyFinder mappings
-nnoremap <Leader>ff :FufCoverageFile!<CR>
-nnoremap <Leader>te :FufTag!<CR>
-nnoremap <Leader>tw :FufTagWithCursorWord!<CR>
-nnoremap <Leader>bt :FufBufferTagAll!<CR>
-nnoremap <Leader>bw :FufBufferTagAllWithCursorWord!<CR>
+nnoremap <Leader>fb :FufFileWithCurrentBufferDir<CR>
+nnoremap <Leader>fe :FufFile<CR>
+nnoremap <Leader>ff :FufCoverageFile<CR>
+nnoremap <Leader>te :FufTag<CR>
+nnoremap <Leader>tw :FufTagWithCursorWord<CR>
+nnoremap <Leader>bt :FufBufferTagAll<CR>
+nnoremap <Leader>bw :FufBufferTagAllWithCursorWord<CR>
 
 " find and replace
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
