@@ -56,8 +56,8 @@ vmap ]<   <
 map  ]>   ]tV]e>
 vmap ]>   >
 
-map  ]#   :call PythonCommentSelection()<CR>
-vmap ]#   :call PythonCommentSelection()<CR>
+map  ]3   :call PythonCommentSelection()<CR>
+vmap ]3   :call PythonCommentSelection()<CR>
 map  ]u   :call PythonUncommentSelection()<CR>
 vmap ]u   :call PythonUncommentSelection()<CR>
 
@@ -105,9 +105,9 @@ vmenu <silent> &Python.Shift\ Block\ Right<Tab>]>
     \]>
 nmenu &Python.-Sep3- :
 vmenu <silent> &Python.Comment\ Selection<Tab>]# 
-    \]#
+    \]3
 nmenu <silent> &Python.Comment\ Selection<Tab>]# 
-    \]#
+    \]3
 vmenu <silent> &Python.Uncomment\ Selection<Tab>]u 
     \]u
 nmenu <silent> &Python.Uncomment\ Selection<Tab>]u 
@@ -135,6 +135,7 @@ nmenu <silent> &Python.Next\ Line\ wrt\ indent<Tab>]<down>
     \]<down>
 
 :com! PBoB execute "normal ".PythonBoB(line('.'), -1, 1)."G"
+
 :com! PEoB execute "normal ".PythonBoB(line('.'), 1, 1)."G"
 :com! UpdateMenu call UpdateMenu()
 
