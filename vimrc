@@ -57,6 +57,7 @@ Bundle "orenhe/pylint.vim"
 Bundle "kevinw/pyflakes-vim"
 Bundle "Crapworks/python_fn.vim"
 Bundle "tpope/vim-fugitive"
+Bundle "mileszs/ack.vim"
 
 filetype plugin indent on
 
