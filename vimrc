@@ -47,6 +47,8 @@ Bundle 'gmarik/vundle'
 
 Bundle "motus/pig.vim"
 
+Bundle "FuzzyFinder"
+
 filetype plugin indent on
 
 """"""
