@@ -5,6 +5,7 @@ RETURNS
 __class__
 __init__
 __name__
+__main__
 class
 const
 country
