@@ -221,12 +221,6 @@ endfunction
 
 " ====== Other ======
 
-function! ErlTemplate()
-    execute "normal i-module(" . expand('%:r') . ").\n-compile(export_all).\n"
-endfunction
-
-autocmd BufNewFile *.erl :call ErlTemplate()
-
 inoremap {<Space>      {}<Left>
 inoremap {<CR>  {<CR>}<Esc>O
 inoremap {}     {}
