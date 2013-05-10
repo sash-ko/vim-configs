@@ -21,6 +21,9 @@ set wildmenu
 set noequalalways
 set viminfo+=! " to save global variables in viminfo (uppercase only!)
 
+set mouse=a
+set mousem=popup
+
 set backup
 set writebackup
 if filewritable('/tmp')
@@ -75,7 +78,7 @@ let g:pylint_show_rate = 0
 let g:pylint_onwrite = 0
 
 " NERDTree
-let g:NERDTreeIgnore = ['^.\+\.pyc$', '^.\+\.o$', '^.\+\.so$', '\.\w\+\~$']
+let g:NERDTreeIgnore = ['^.\+\.pyc$', '^.\+\.o$', '^.\+\.so$', '\.\w\+\~$', '^.\+\.egg-info$', '^dist$', '^.\+\.tar.gz$']
 
 " sessions
 let g:session_autosave = 1
@@ -90,12 +93,18 @@ let TList_Auto_Update = 1
 
 " ====== Python specific ======
 
+let g:pep8_map='<leader>8'
+
 autocmd BufEnter *.py let w:m1=matchadd('Search', '\%>80v.*', -1)
 autocmd BufLeave *.py :silent! call matchdelete(w:m1)
 " template for python files
 autocmd BufNewFile *.py 0r ~/.vim/templates/py.tmpl
 autocmd BufEnter,BufWrite *.py set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
 autocmd BufEnter,BufWrite *.py map <F1> :Pydoc <C-r><C-w><cr>
+
+augroup filetypedetect
+  au BufNewFile,BufRead *.pig set filetype=pig syntax=pig
+augroup END
 
 command Pyflakes :call Pyflakes()
 function! Pyflakes()
@@ -148,6 +157,8 @@ endfunction
 
 autocmd BufRead,BufWrite .vimrc map <F1> :help <C-r><C-w><cr>
 
+let g:ackprg="ack-grep -H --nocolor --nogroup --column"
+
 map <F2> :w<CR>
 map <F3> :Tlist<CR>
 map <F4> :NERDTreeToggle<CR>
@@ -171,8 +182,8 @@ nnoremap <Leader>fe :FufFile<CR>
 nnoremap <Leader>ff :FufCoverageFile<CR>
 nnoremap <Leader>te :FufTag<CR>
 nnoremap <Leader>tw :FufTagWithCursorWord<CR>
-nnoremap <Leader>bt :FufBufferTagAll<CR>
-nnoremap <Leader>bw :FufBufferTagAllWithCursorWord<CR>
+nnoremap <Leader>bt :FufBuffer<CR>
+"nnoremap <Leader>bw :FufBufferTagAllWithCursorWord<CR>
 
 " find and replace
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
