@@ -59,6 +59,7 @@ Bundle "Crapworks/python_fn.vim"
 Bundle "tpope/vim-fugitive"
 Bundle "mileszs/ack.vim"
 Bundle "motemen/git-vim"
+Bundle "xolox/vim-session"
 
 filetype plugin indent on
 
