@@ -55,6 +55,7 @@ Bundle "slack/vim-bufexplorer"
 Bundle "cordarei/vim-python-syntax"
 Bundle "orenhe/pylint.vim"
 Bundle "kevinw/pyflakes-vim"
+Bundle "Crapworks/python_fn.vim"
 
 filetype plugin indent on
 
