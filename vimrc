@@ -64,6 +64,7 @@ Bundle "vim-scripts/YankRing.vim"
 Bundle "vim-scripts/pydoc.vim"
 Bundle "vim-scripts/taglist.vim"
 Bundle "vim-scripts/mru.vim"
+Bundle "ervandew/supertab"
 
 filetype plugin indent on
 
