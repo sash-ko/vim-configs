@@ -37,8 +37,19 @@ set complete+=s~/.vim/autoload/autocomplit.ths
 syntax on
 colorscheme desert
 
-filetype on
-filetype plugin on
+" Configure bundles
+
+filetype off
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+Bundle 'gmarik/vundle'
+
+Bundle "motus/pig.vim"
+
+filetype plugin indent on
+
+""""""
 
 set title
 set titlelen=50
