@@ -37,6 +37,12 @@ set complete+=s~/.vim/autoload/autocomplit.ths
 syntax on
 colorscheme desert
 
+" http://vim.wikia.com/wiki/Switch_between_Vim_window_splits_easily
+nmap <silent> <A-Up> :wincmd k<CR>
+nmap <silent> <A-Down> :wincmd j<CR>
+nmap <silent> <A-Left> :wincmd h<CR>
+nmap <silent> <A-Right> :wincmd l<CR>
+
 " Configure bundles
 
 filetype off
