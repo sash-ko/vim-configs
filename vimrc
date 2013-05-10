@@ -51,6 +51,8 @@ Bundle "scrooloose/nerdtree"
 Bundle "L9"
 Bundle "FuzzyFinder"
 
+Bundle "slack/vim-bufexplorer"
+
 filetype plugin indent on
 
 """"""
