@@ -63,6 +63,7 @@ Bundle "xolox/vim-session"
 Bundle "vim-scripts/YankRing.vim"
 Bundle "vim-scripts/pydoc.vim"
 Bundle "vim-scripts/taglist.vim"
+Bundle "vim-scripts/mru.vim"
 
 filetype plugin indent on
 
