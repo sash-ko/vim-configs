@@ -52,6 +52,7 @@ Bundle "L9"
 Bundle "FuzzyFinder"
 
 Bundle "slack/vim-bufexplorer"
+Bundle "cordarei/vim-python-syntax"
 
 filetype plugin indent on
 
