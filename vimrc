@@ -54,6 +54,7 @@ Bundle "FuzzyFinder"
 Bundle "slack/vim-bufexplorer"
 Bundle "cordarei/vim-python-syntax"
 Bundle "orenhe/pylint.vim"
+Bundle "kevinw/pyflakes-vim"
 
 filetype plugin indent on
 
