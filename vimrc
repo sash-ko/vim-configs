@@ -60,6 +60,7 @@ Bundle "tpope/vim-fugitive"
 Bundle "mileszs/ack.vim"
 Bundle "motemen/git-vim"
 Bundle "xolox/vim-session"
+Bundle "vim-scripts/YankRing.vim"
 
 filetype plugin indent on
 
