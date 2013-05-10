@@ -47,6 +47,7 @@ Bundle 'gmarik/vundle'
 
 Bundle "motus/pig.vim"
 
+Bundle "L9"
 Bundle "FuzzyFinder"
 
 filetype plugin indent on
