@@ -1,11 +1,9 @@
-## My custom vim configuration
+### My custom vim configuration
 
-### Usage
+### Usage (Linux)
 
-#### Linux
-
-#### Clone repository
+Clone repository
     git clone https://github.com/sash-ko/vim-configs.git
 
-#### Install (symlink .vimrc, .vim/ and install plugins via Vundle)
+Install (symlink .vimrc, .vim/ and install plugins via Vundle)
     ./install.sh
