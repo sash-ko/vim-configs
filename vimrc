@@ -55,7 +55,7 @@ Bundle "motus/pig.vim"
 
 Bundle "scrooloose/nerdtree"
 Bundle "L9"
-Bundle "FuzzyFinder"
+Bundle "kien/ctrlp.vim"
 
 Bundle "slack/vim-bufexplorer"
 Bundle "cordarei/vim-python-syntax"
@@ -117,16 +117,18 @@ let g:pylint_onwrite = 0
 let g:NERDTreeIgnore = ['^.\+\.pyc$', '^.\+\.o$', '^.\+\.so$', '\.\w\+\~$', '^.\+\.egg-info$', '^dist$', '^.\+\.tar.gz$']
 let g:NERDTreeChDirMode = 2
 
-" FuzzyFinder
-let g:fuf_file_exclude = '\v\~$'
-    \.'|\.(o|so|exe|dll|bak|orig|swp|jar|bat)$'
-    \.'|\.(tar|gz|zip|pickle)$'
-    \.'|\.(pyc|html|class)$'
-    \.'|\.(pdf|bson|ods|jpg|png)$'
-    \.'|(^|[/\\])lib[/\\]'
-    \.'|(^|[/\\])\.(hg|git|bzr)($|[/\\])'
+" Ctrlp
+let g:ctrlp_custom_ignore = {
+    \ 'dir':  '\v[\/]\.(git|hg|svn|lib)$',
+    \ 'file': '\v\.(o|so|exe|dll|bak|orig|swp|jar|bat|pyc|html|class|pdf|bson|ods|jpg|png|tar|gz|bz2|zip|pickle)$'
+    \ }
 
-let g:fuf_coveragefile_exclude = g:fuf_file_exclude
+let g:ctrlp_mruf_exclude = g:ctrlp_custom_ignore
+
+let g:ctrlp_match_window_bottom = 1
+let g:ctrlp_match_window_reversed = 0
+let g:ctrlp_by_filename = 1
+let g:ctrlp_max_height = 15
 
 " sessions
 let g:session_autosave = 1
@@ -224,16 +226,9 @@ map <C-S-Tab> :tabpewvious<CR>
 imap <S-Tab> <ESC>:tabnext<CR>
 imap <C-S-Tab> <ESC>:tabpewvious<CR>
 
-"FuzzyFinder mappings
-nnoremap <Leader>fb :FufFileWithCurrentBufferDir<CR>
-nnoremap <Leader>fe :FufFile<CR>
-nnoremap <Leader>ff :FufCoverageFile<CR>
-nnoremap <Leader>te :FufTag<CR>
-nnoremap <Leader>tw :FufTagWithCursorWord<CR>
-nnoremap <Leader>bt :FufBuffer<CR>
+nnoremap <leader>ff :CtrlPMixed<cr>
 
 nnoremap <Leader>r :NERDTreeFind<CR>
-"nnoremap <Leader>bw :FufBufferTagAllWithCursorWord<CR>
 
 " find and replace
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
