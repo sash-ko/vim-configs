@@ -120,10 +120,12 @@ let g:NERDTreeChDirMode = 2
 " Ctrlp
 let g:ctrlp_custom_ignore = {
     \ 'dir':  '\v[\/]\.(git|hg|svn|lib)$',
-    \ 'file': '\v\.(o|so|exe|dll|bak|orig|swp|jar|bat|pyc|html|class|pdf|bson|ods|jpg|png|tar|gz|bz2|zip|pickle)$'
+    \ 'file': '\v\.(o|so|exe|dll|bak|orig|swp|jar|bat|pyc|html|class|pdf|bson|ods|jpg|png|tar|gz|bz2|zip|pickle)$',
     \ }
 
-let g:ctrlp_mruf_exclude = g:ctrlp_custom_ignore
+"let g:ctrlp_mruf_exclude = {
+"    \ 'file': '\v\.(o|so|exe|dll|bak|orig|swp|jar|bat|pyc|html|class|pdf|bson|ods|jpg|png|tar|gz|bz2|zip|pickle)$',
+"    \ }
 
 let g:ctrlp_match_window_bottom = 1
 let g:ctrlp_match_window_reversed = 0
