@@ -117,6 +117,16 @@ let g:pylint_onwrite = 0
 let g:NERDTreeIgnore = ['^.\+\.pyc$', '^.\+\.o$', '^.\+\.so$', '\.\w\+\~$', '^.\+\.egg-info$', '^dist$', '^.\+\.tar.gz$']
 let g:NERDTreeChDirMode = 2
 
+" FuzzyFinder
+let g:fuf_file_exclude = '\v\~$'
+    \.'|\.(o|so|exe|dll|bak|orig|swp|jar|bat)$'
+    \.'|\.(tar|gz|zip|pickle)$'
+    \.'|\.(pyc|html|class)$'
+    \.'|\.(pdf|bson|ods|jpg|png)$'
+    \.'|(^|[/\\])\.(hg|git|bzr)($|[/\\])'
+
+let g:fuf_coveragefile_exclude = g:fuf_file_exclude
+
 " sessions
 let g:session_autosave = 1
 let g:session_autoload = 0
@@ -220,6 +230,7 @@ nnoremap <Leader>ff :FufCoverageFile<CR>
 nnoremap <Leader>te :FufTag<CR>
 nnoremap <Leader>tw :FufTagWithCursorWord<CR>
 nnoremap <Leader>bt :FufBuffer<CR>
+
 nnoremap <Leader>r :NERDTreeFind<CR>
 "nnoremap <Leader>bw :FufBufferTagAllWithCursorWord<CR>
 
