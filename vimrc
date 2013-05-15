@@ -220,6 +220,7 @@ nnoremap <Leader>ff :FufCoverageFile<CR>
 nnoremap <Leader>te :FufTag<CR>
 nnoremap <Leader>tw :FufTagWithCursorWord<CR>
 nnoremap <Leader>bt :FufBuffer<CR>
+nnoremap <Leader>r :NERDTreeFind<CR>
 "nnoremap <Leader>bw :FufBufferTagAllWithCursorWord<CR>
 
 " find and replace
