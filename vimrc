@@ -123,6 +123,7 @@ let g:fuf_file_exclude = '\v\~$'
     \.'|\.(tar|gz|zip|pickle)$'
     \.'|\.(pyc|html|class)$'
     \.'|\.(pdf|bson|ods|jpg|png)$'
+    \.'|(^|[/\\])lib[/\\]'
     \.'|(^|[/\\])\.(hg|git|bzr)($|[/\\])'
 
 let g:fuf_coveragefile_exclude = g:fuf_file_exclude
