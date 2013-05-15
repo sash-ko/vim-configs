@@ -115,6 +115,7 @@ let g:pylint_onwrite = 0
 
 " NERDTree
 let g:NERDTreeIgnore = ['^.\+\.pyc$', '^.\+\.o$', '^.\+\.so$', '\.\w\+\~$', '^.\+\.egg-info$', '^dist$', '^.\+\.tar.gz$']
+let g:NERDTreeChDirMode = 2
 
 " sessions
 let g:session_autosave = 1
