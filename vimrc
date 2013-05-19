@@ -108,6 +108,9 @@ let python_highlight_all = 1
 let g:pydoc_cmd = "/usr/bin/pydoc"
 let g:pydoc_highlight=0
 
+map  ]3   :call PythonCommentSelection()<CR>
+vmap ]3   :call PythonCommentSelection()<CR>
+
 " pylint
 autocmd FileType python compiler pylint
 let g:pylint_show_rate = 0
