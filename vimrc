@@ -70,6 +70,7 @@ Bundle "vim-scripts/pydoc.vim"
 Bundle "vim-scripts/taglist.vim"
 Bundle "vim-scripts/mru.vim"
 Bundle "ervandew/supertab"
+Bundle "nvie/vim-flake8"
 
 filetype plugin indent on
 
@@ -120,20 +121,10 @@ let g:ctrlp_custom_ignore = {
     \ 'file': '\v\.(o|so|exe|dll|bak|orig|swp|jar|bat|pyc|html|class|pdf|bson|ods|jpg|png|tar|gz|bz2|zip|pickle)$',
     \ }
 
-"let g:ctrlp_mruf_exclude = {
-"    \ 'file': '\v\.(o|so|exe|dll|bak|orig|swp|jar|bat|pyc|html|class|pdf|bson|ods|jpg|png|tar|gz|bz2|zip|pickle)$',
-"    \ }
-
 let g:ctrlp_match_window_bottom = 1
 let g:ctrlp_match_window_reversed = 0
 let g:ctrlp_by_filename = 1
 let g:ctrlp_max_height = 15
-
-" sessions
-"let g:session_autosave = 1
-"let g:session_autoload = 0
-"let g:loaded_session = 1
-"set sessionoptions-=tabpages
 
 " tag list
 let Tlist_Use_Right_Window = 1
@@ -144,8 +135,17 @@ let TList_Auto_Update = 1
 
 let g:pep8_map='<leader>8'
 
-autocmd BufEnter *.py let w:m1=matchadd('Search', '\%>80v.*', -1)
-autocmd BufLeave *.py :silent! call matchdelete(w:m1)
+highlight OverLength ctermbg=darkgrey ctermfg=white guibg=Gray16
+autocmd Filetype python match OverLength /\%81v.\+/
+
+"if has("gui_running")
+"    highlight colorcolumn guibg=Gray16
+"else
+"    highlight colorcolumn ctermbg=DarkGray
+"endif
+"autocmd Filetype * set colorcolumn=0
+"autocmd Filetype python set colorcolumn=80
+
 " template for python files
 autocmd BufNewFile *.py 0r ~/.vim/templates/py.tmpl
 autocmd BufEnter,BufWrite *.py set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
@@ -173,8 +173,6 @@ function! HideComments()
 endfunction
 
 autocmd BufEnter *.cpp,*.h,*.c,*.hpp execute "call HideComments()"
-autocmd BufEnter *.cpp,*.h,*.c,*.hpp nmap <F6> :A<CR>
-autocmd BufEnter *.cpp,*.h,*.c,*.hpp nmap <S-i> :IHS<CR>
 autocmd BufNewFile,BufEnter,BufWrite *.c,*.cpp,*.h,*.hpp set cindent
 
 " ====== Key mappings ======
@@ -213,8 +211,6 @@ map <F5> :call ExecuteFile()<CR>
 map <F7> :execute "vimgrep /" . expand("<cword>") . "/j ********/*.%:e" <Bar> cw<CR>
 map <C-F7> [I:let nr = input("Which one: ")<Bar>exe "normal " . nr ."[\t"<CR>
 map <F9> :set hls!<CR>
-"map <F10> :OpenSession<CR>
-"map <C-F10> :SaveSession 
 nnoremap <silent> <F11> :YRShow<CR>
 
 map <S-Tab> :tabnext<CR>
