@@ -59,13 +59,12 @@ Bundle "kien/ctrlp.vim"
 
 Bundle "slack/vim-bufexplorer"
 Bundle "cordarei/vim-python-syntax"
-Bundle "orenhe/pylint.vim"
 Bundle "kevinw/pyflakes-vim"
 Bundle "Crapworks/python_fn.vim"
 Bundle "tpope/vim-fugitive"
 Bundle "mileszs/ack.vim"
 Bundle "motemen/git-vim"
-Bundle "xolox/vim-session"
+"Bundle "xolox/vim-session"
 Bundle "vim-scripts/YankRing.vim"
 Bundle "vim-scripts/pydoc.vim"
 Bundle "vim-scripts/taglist.vim"
@@ -111,11 +110,6 @@ let g:pydoc_highlight=0
 map  ]3   :call PythonCommentSelection()<CR>
 vmap ]3   :call PythonCommentSelection()<CR>
 
-" pylint
-autocmd FileType python compiler pylint
-let g:pylint_show_rate = 0
-let g:pylint_onwrite = 0
-
 " NERDTree
 let g:NERDTreeIgnore = ['^.\+\.pyc$', '^.\+\.o$', '^.\+\.so$', '\.\w\+\~$', '^.\+\.egg-info$', '^dist$', '^.\+\.tar.gz$']
 let g:NERDTreeChDirMode = 2
@@ -136,10 +130,10 @@ let g:ctrlp_by_filename = 1
 let g:ctrlp_max_height = 15
 
 " sessions
-let g:session_autosave = 1
-let g:session_autoload = 0
+"let g:session_autosave = 1
+"let g:session_autoload = 0
 "let g:loaded_session = 1
-set sessionoptions-=tabpages
+"set sessionoptions-=tabpages
 
 " tag list
 let Tlist_Use_Right_Window = 1
@@ -169,8 +163,6 @@ function! Pyflakes()
     silent make
     cw
 endfunction
-
-command Pylint :call Pylint()
 
 " ====== C/C++ specific ======
 
@@ -221,8 +213,8 @@ map <F5> :call ExecuteFile()<CR>
 map <F7> :execute "vimgrep /" . expand("<cword>") . "/j ********/*.%:e" <Bar> cw<CR>
 map <C-F7> [I:let nr = input("Which one: ")<Bar>exe "normal " . nr ."[\t"<CR>
 map <F9> :set hls!<CR>
-map <F10> :OpenSession<CR>
-map <C-F10> :SaveSession 
+"map <F10> :OpenSession<CR>
+"map <C-F10> :SaveSession 
 nnoremap <silent> <F11> :YRShow<CR>
 
 map <S-Tab> :tabnext<CR>
