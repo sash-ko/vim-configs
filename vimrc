@@ -208,8 +208,8 @@ map <F2> :w<CR>
 map <F3> :Tlist<CR>
 map <F4> :NERDTreeToggle<CR>
 map <F5> :call ExecuteFile()<CR>
-map <F7> :execute "vimgrep /" . expand("<cword>") . "/j ********/*.%:e" <Bar> cw<CR>
-map <C-F7> [I:let nr = input("Which one: ")<Bar>exe "normal " . nr ."[\t"<CR>
+map <C-F7> :execute "vimgrep /" . expand("<cword>") . "/j ********/*.%:e" <Bar> cw<CR>
+"map <C-F7> [I:let nr = input("Which one: ")<Bar>exe "normal " . nr ."[\t"<CR>
 map <F9> :set hls!<CR>
 nnoremap <silent> <F11> :YRShow<CR>
 
