@@ -72,6 +72,7 @@ Bundle "vim-scripts/mru.vim"
 Bundle "ervandew/supertab"
 Bundle "nvie/vim-flake8"
 Bundle "guns/vim-clojure-static"
+Bundle "kien/rainbow_parentheses.vim"
 
 filetype plugin indent on
 
@@ -263,3 +264,8 @@ abbr heigth height
 " ====== Menu.Tools ======
 
 :menu Tools.SaveSudo :w !sudo tee %<CR>
+
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
