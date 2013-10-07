@@ -71,6 +71,7 @@ Bundle "vim-scripts/taglist.vim"
 Bundle "vim-scripts/mru.vim"
 Bundle "ervandew/supertab"
 Bundle "nvie/vim-flake8"
+Bundle "guns/vim-clojure-static"
 
 filetype plugin indent on
 
