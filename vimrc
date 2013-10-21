@@ -73,6 +73,8 @@ Bundle "ervandew/supertab"
 Bundle "nvie/vim-flake8"
 Bundle "guns/vim-clojure-static"
 Bundle "kien/rainbow_parentheses.vim"
+Bundle "tpope/vim-fireplace"
+Bundle "tpope/vim-classpath"
 
 filetype plugin indent on
 
