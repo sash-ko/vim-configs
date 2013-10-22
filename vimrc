@@ -75,6 +75,7 @@ Bundle "guns/vim-clojure-static"
 Bundle "kien/rainbow_parentheses.vim"
 Bundle "tpope/vim-fireplace"
 Bundle "tpope/vim-classpath"
+Bundle "derekwyatt/vim-scala"
 
 filetype plugin indent on
 
