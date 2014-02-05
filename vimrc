@@ -76,6 +76,7 @@ Bundle "kien/rainbow_parentheses.vim"
 Bundle "tpope/vim-fireplace"
 Bundle "tpope/vim-classpath"
 Bundle "derekwyatt/vim-scala"
+Bundle "aaronbieber/vim-quicktask"
 
 filetype plugin indent on
 
