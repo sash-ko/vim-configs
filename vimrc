@@ -77,6 +77,8 @@ Bundle "tpope/vim-fireplace"
 Bundle "tpope/vim-classpath"
 Bundle "derekwyatt/vim-scala"
 Bundle "aaronbieber/vim-quicktask"
+Bundle "xolox/vim-misc"
+Bundle "xolox/vim-notes"
 
 filetype plugin indent on
 
