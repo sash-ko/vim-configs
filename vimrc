@@ -79,6 +79,7 @@ Bundle "derekwyatt/vim-scala"
 Bundle "aaronbieber/vim-quicktask"
 Bundle "xolox/vim-misc"
 Bundle "xolox/vim-notes"
+Bundle "jimenezrick/vimerl"
 
 filetype plugin indent on
 
