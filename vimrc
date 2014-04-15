@@ -49,16 +49,13 @@ filetype off
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
-Bundle 'gmarik/vundle'
-
+"Bundle 'gmarik/vundle'
 Bundle "motus/pig.vim"
-
 Bundle "scrooloose/nerdtree"
 Bundle "L9"
 Bundle "kien/ctrlp.vim"
-
 Bundle "jlanzarotta/bufexplorer"
-Bundle "cordarei/vim-python-syntax"
+Bundle "hdima/python-syntax"
 Bundle "kevinw/pyflakes-vim"
 Bundle "Crapworks/python_fn.vim"
 Bundle "tpope/vim-fugitive"
