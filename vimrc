@@ -186,29 +186,6 @@ autocmd BufNewFile,BufEnter,BufWrite *.c,*.cpp,*.h,*.hpp set cindent
 
 " ====== Key mappings ======
 
-function! ExecuteFile()
-    execute "NERDTreeClose"
-    execute "w"
-
-    let ext = expand('%:e')
-    if ext == "py"
-        execute "call Pyflakes()"
-        execute "!python %"
-    elseif ext == "sh"
-        execute "!bash %"
-    elseif ext == "c"
-        execute "!cc % -o %:r"<CR>
-        execute "!./%:r"
-    elseif ext == "cpp"
-        execute "!gcc % -o %:r"<CR>
-        execute "./%:r"
-    elseif ext == "html"
-        execute "!firefox %"
-    else
-        echo "Can not execute file " . expand("%")
-    endif
-endfunction
-
 autocmd BufRead,BufWrite .vimrc map <F1> :help <C-r><C-w><cr>
 
 let g:ackprg="ack-grep -H --nocolor --nogroup --column"
@@ -216,7 +193,6 @@ let g:ackprg="ack-grep -H --nocolor --nogroup --column"
 map <F2> :w<CR>
 map <F3> :Tlist<CR>
 map <F4> :NERDTreeToggle<CR>
-map <F5> :call ExecuteFile()<CR>
 map <C-F7> :execute "vimgrep /" . expand("<cword>") . "/j ********/*.%:e" <Bar> cw<CR>
 "map <C-F7> [I:let nr = input("Which one: ")<Bar>exe "normal " . nr ."[\t"<CR>
 map <F9> :set hls!<CR>
